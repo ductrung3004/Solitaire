@@ -1,24 +1,9 @@
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
 import java.util.Timer;
-import java.util.TimerTask;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class Solitaire
 {
@@ -308,21 +293,24 @@ public class Solitaire
 			}
 			// SHOW (WASTE) CARD OPERATIONS
 			// display new show card
-			if (newCardButton.contains(start) && deck.showSize() > 0)
-			{
+			if (newCardButton.contains(start) && deck.showSize() > 0) {
 				if (putBackOnDeck && prevCard != null)
 				{
 					System.out.println("Putting back on show stack: ");
+
 					prevCard.getValue();
 					prevCard.getSuit();
 					deck.putFirst(prevCard);
 				}
-
+				System.out.println(putBackOnDeck);
 				System.out.print("poping deck ");
 				deck.showSize();
 				if (prevCard != null)
 					table.remove(prevCard);
 				Card c = deck.pop().setFaceup();
+				System.out.println("popped card: ");
+				c.getSuit();
+				c.getValue();
 				table.add(Solitaire.moveCard(c, SHOW_POS.x, SHOW_POS.y));
 				c.repaint();
 				table.repaint();
@@ -768,7 +756,7 @@ public class Solitaire
 		frame.setSize(TABLE_WIDTH, TABLE_HEIGHT);
 
 		table.setLayout(null);
-		table.setBackground(new Color(0, 180, 0));
+		table.setBackground(new Color(180, 20, 80));
 
 		contentPane = frame.getContentPane();
 		contentPane.add(table);

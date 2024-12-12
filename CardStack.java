@@ -21,11 +21,9 @@ class CardStack extends JComponent
 
 	public CardStack(boolean isDeck)
 	{
-		int f = 1;
 		this.setLayout(null);
 		v = new Vector<Card>();
-		if (isDeck)
-		{
+		if (isDeck){
 			// set deck position
 			for (Card.Suit suit : Card.Suit.values())
 			{
@@ -34,8 +32,8 @@ class CardStack extends JComponent
 					v.add(new Card(suit, value));
 				}
 			}
-		} else
-		{
+		}
+		else{
 			playStack = true;
 		}
 	}
@@ -55,7 +53,7 @@ class CardStack extends JComponent
 
 	public Card getFirst()
 	{
-		if (!this.empty())
+		if (!empty())
 		{
 			return v.get(0);
 		} else
@@ -65,7 +63,7 @@ class CardStack extends JComponent
 	// analogous to peek()
 	public Card getLast()
 	{
-		if (!this.empty())
+		if (!empty())
 		{
 			return v.lastElement();
 		} else
@@ -75,7 +73,7 @@ class CardStack extends JComponent
 	// queue-like functionality
 	public Card popFirst()
 	{
-		if (!this.empty())
+		if (!empty())
 		{
 			Card c = this.getFirst();
 			v.remove(0);
@@ -85,14 +83,12 @@ class CardStack extends JComponent
 
 	}
 
-	public void push(Card c)
-	{
+	public void push(Card c){
 		v.add(c);
 	}
 
-	public Card pop()
-	{
-		if (!this.empty())
+	public Card pop() {
+		if (!empty())
 		{
 			Card c = v.lastElement();
 			v.remove(v.size() - 1);
@@ -102,15 +98,12 @@ class CardStack extends JComponent
 	}
 
 	// shuffle the cards
-	public void shuffle()
-	{
+	public void shuffle() {
 		Vector<Card> v = new Vector<Card>();
-		while (!this.empty())
-		{
-			v.add(this.pop());
+		while (!empty()) {
+			v.add(pop());
 		}
-		while (!v.isEmpty())
-		{
+		while (!v.isEmpty()) {
 			Card c = v.elementAt((int) (Math.random() * v.size()));
 			this.push(c);
 			v.removeElement(c);
@@ -124,22 +117,6 @@ class CardStack extends JComponent
 		return v.size();
 	}
 
-	// reverse the order of the stack
-	public CardStack reverse()
-	{
-		Vector<Card> v = new Vector<Card>();
-		while (!this.empty())
-		{
-			v.add(this.pop());
-		}
-		while (!v.isEmpty())
-		{
-			Card c = v.firstElement();
-			this.push(c);
-			v.removeElement(c);
-		}
-		return this;
-	}
 
 	public void makeEmpty()
 	{

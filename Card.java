@@ -1,21 +1,14 @@
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
-class Card extends JPanel
-{
-	public static enum Value
-	{
+class Card extends JPanel {
+	public static enum Value {
 		ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING
 	}
 
-	public static enum Suit
-	{
+	public static enum Suit {
 		SPADES, CLUBS, DIAMONDS, HEARTS
 	}
 
@@ -135,8 +128,7 @@ class Card extends JPanel
 		return _value;
 	}
 
-	public void setWhereAmI(Point p)
-	{
+	public void setWhereAmI(Point p) {
 		whereAmI = p;
 	}
 
@@ -191,9 +183,11 @@ class Card extends JPanel
 		return (rect.contains(p));
 	}
 
-	private void drawSuit(Graphics2D g, String suit, Color color)
+	private void drawSuit(Graphics2D g, String suit, Color color, ImageIcon img)
 	{
 		g.setColor(color);
+		g.drawImage(img.getImage(), _location.x + 20, _location.y + 40, Card.CARD_WIDTH-40, Card.CARD_HEIGHT-80, Color.white, null);
+
 		g.drawString(suit, _location.x + x_offset, _location.y + y_offset);
 		g.drawString(suit, _location.x + x_offset, _location.y + CARD_HEIGHT - 5);
 	}
@@ -220,16 +214,16 @@ class Card extends JPanel
 			switch (_suit)
 			{
 			case HEARTS:
-				drawSuit(g2d, "Hearts", Color.RED);
+				drawSuit(g2d, "Hearts", Color.RED, new ImageIcon("images/Heart.png"));
 				break;
 			case DIAMONDS:
-				drawSuit(g2d, "Diamonds", Color.RED);
+				drawSuit(g2d, "Diamonds", Color.RED,  new ImageIcon("images/Diamond.png"));
 				break;
 			case SPADES:
-				drawSuit(g2d, "Spades", Color.BLACK);
+				drawSuit(g2d, "Spades", Color.BLACK, new ImageIcon("images/Spade.png"));
 				break;
 			case CLUBS:
-				drawSuit(g2d, "Clubs", Color.BLACK);
+				drawSuit(g2d, "Clubs", Color.BLACK, new ImageIcon("images/Club.png"));
 				break;
 			}
 			int new_x_offset = x_offset + (CARD_WIDTH - 30);
@@ -278,11 +272,13 @@ class Card extends JPanel
 		} else
 		{
 			// DRAW THE BACK OF THE CARD IF FACEDOWN
+			ImageIcon img = new ImageIcon("images/Dice Icon.png");
 			RoundRectangle2D rect = new RoundRectangle2D.Double(_location.x, _location.y, CARD_WIDTH, CARD_HEIGHT,
 					CORNER_ANGLE, CORNER_ANGLE);
-			g2d.setColor(Color.LIGHT_GRAY);
+			g2d.setColor(Color.white);
 			g2d.fill(rect);
 			g2d.setColor(Color.black);
+			g2d.drawImage(img.getImage(), _location.x + 10, _location.y + 25, Card.CARD_WIDTH - 20, Card.CARD_HEIGHT - 50, Color.white, null);
 			g2d.draw(rect);
 		}
 

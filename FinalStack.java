@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -43,13 +44,16 @@ class FinalStack extends CardStack
 			add(Solitaire.moveCard(this.getLast(), 1, 1));
 		} else
 		{
+			ImageIcon img = new ImageIcon("images/Final Deck Images.png");
 			// draw back of card if empty
 			Graphics2D g2d = (Graphics2D) g;
 			RoundRectangle2D rect = new RoundRectangle2D.Double(0, 0, Card.CARD_WIDTH, Card.CARD_HEIGHT,
 					Card.CORNER_ANGLE, Card.CORNER_ANGLE);
-			g2d.setColor(Color.LIGHT_GRAY);
+			g2d.setColor(Color.white);
+
 			g2d.fill(rect);
 			g2d.setColor(Color.black);
+			g2d.drawImage(img.getImage(), 5, 20, Card.CARD_WIDTH - 10, Card.CARD_HEIGHT - 40, Color.white, null);
 			g2d.draw(rect);
 		}
 
