@@ -1,8 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.ListIterator;
-import java.util.Vector;
+import java.util.*;
 
 import javax.swing.JComponent;
 
@@ -13,7 +12,7 @@ import javax.swing.JComponent;
 class CardStack extends JComponent
 {
 	protected final int NUM_CARDS = 52;
-	protected Vector<Card> v;
+	protected Deque<Card> v;
 	protected boolean playStack = false;
 	protected int SPREAD = 18;
 	protected int _x = 0;
@@ -22,7 +21,7 @@ class CardStack extends JComponent
 	public CardStack(boolean isDeck)
 	{
 		this.setLayout(null);
-		v = new Vector<Card>();
+		v = new LinkedList<Card>();
 		if (isDeck){
 			// set deck position
 			for (Card.Suit suit : Card.Suit.values())
@@ -48,15 +47,14 @@ class CardStack extends JComponent
 
 	public void putFirst(Card c)
 	{
-		v.add(0, c);
+		v.addFirst(c);
 	}
 
 	public Card getFirst()
 	{
 		if (!empty())
-		{
-			return v.get(0);
-		} else
+			return v.getFirst();
+		else
 			return null;
 	}
 
@@ -64,9 +62,8 @@ class CardStack extends JComponent
 	public Card getLast()
 	{
 		if (!empty())
-		{
-			return v.lastElement();
-		} else
+			return v.getLast();
+		else
 			return null;
 	}
 
@@ -74,11 +71,8 @@ class CardStack extends JComponent
 	public Card popFirst()
 	{
 		if (!empty())
-		{
-			Card c = this.getFirst();
-			v.remove(0);
-			return c;
-		} else
+			return v.removeFirst();
+		else
 			return null;
 
 	}
@@ -89,11 +83,8 @@ class CardStack extends JComponent
 
 	public Card pop() {
 		if (!empty())
-		{
-			Card c = v.lastElement();
-			v.remove(v.size() - 1);
-			return c;
-		} else
+			return v.removeLast();
+		else
 			return null;
 	}
 
@@ -154,7 +145,7 @@ class CardStack extends JComponent
 		if (playStack)
 		{
 			removeAll();
-			ListIterator<Card> iter = v.listIterator();
+			Iterator<Card> iter = v.iterator();
 			Point prev = new Point(); // positioning relative to the container
 			Point prevWhereAmI = new Point();// abs positioning on the board
 			if (iter.hasNext())
