@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MySolitaire-master:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MySolitaire_master_jar</output-path>
+    <root id="archive" name="MySolitaire-master.jar">
+      <element id="module-output" name="MySolitaire-master" />
+    </root>
+  </artifact>
+</component>

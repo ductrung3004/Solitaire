@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <option name="projectDefaultTargetUuid" value="72e062bf-1eed-4284-832b-e06a563701c7" />
+    <targets>
+      <target name="truntruntramcam@truntrun.ddns.net:3004" type="ssh/sftp" uuid="72e062bf-1eed-4284-832b-e06a563701c7">
+        <config>
+          <option name="projectRootOnTarget" value="/TrungNguyen/truntruntramcam/Solitaire Project" />
+          <option name="serverName" value="truntruntramcam@truntrun.ddns.net:3004 password" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/etc/profile: line 4: id: command not found /etc/profile: line 4: [: : integer expression expected " />
+            <option name="javaVersionString" value="21.0.5" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>

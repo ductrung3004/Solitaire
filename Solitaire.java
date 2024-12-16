@@ -793,16 +793,18 @@ public class Solitaire
 		time = 0;
 
 		newGameButton.addActionListener(new NewGameListener());
-		quitGameButton.setBounds(0, TABLE_HEIGHT - 70, 120, 30);
+		newGameButton.setBounds(120, TABLE_HEIGHT - 70, 120, 30);
+
 
 		quitGameButton.addActionListener(new QuitGameListener());
-		showRulesButton.setBounds(240, TABLE_HEIGHT - 70, 120, 30);
+		quitGameButton.setBounds(0, TABLE_HEIGHT - 70, 120, 30);
+
 
 
 		showRulesButton.addActionListener(new ShowRulesListener());
-		newGameButton.setBounds(120, TABLE_HEIGHT - 70, 120, 30);
+		showRulesButton.setBounds(240, TABLE_HEIGHT - 70, 120, 30);
 
-		gameTitle.setText("<b>Solitaire</b> <br> Designed by <br> Nguyen Duc Trung <br> Nguyen Anh Minh <br> Dec 2024");
+		gameTitle.setText("<b>Solitaire</b> <br> Instructor: Tin Thai <br> Designed by <br> Nguyen Duc Trung <br> Nguyen Anh Minh <br> DSA Project 2024 ");
 		gameTitle.setEditable(false);
 		gameTitle.setOpaque(false);
 		gameTitle.setBounds(235, 20, 120, 100);
