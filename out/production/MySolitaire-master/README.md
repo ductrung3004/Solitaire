@@ -2,7 +2,7 @@
 # Solitaire Project for Data Structures and Algorithms (DSA) Course
 
 
-![Logo](https://hcmiu.edu.vn/wp-content/uploads/2017/08/logo-vector-IU-01.png)
+![Logo](images/iulogo.png)
 
 
 ## Project Overview
