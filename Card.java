@@ -132,11 +132,13 @@ class Card extends JPanel {
 		whereAmI = p;
 	}
 
-	public Point getWhereAmI()
-	{
+	public Point getWhereAmI() {
 		return whereAmI;
 	}
 
+	public String showPoint(){
+		return(x + " " + y);
+	}
 	public Point getXY()
 	{
 		return new Point(x, y);
@@ -189,13 +191,13 @@ class Card extends JPanel {
 		g.drawImage(img.getImage(), _location.x + 20, _location.y + 40, Card.CARD_WIDTH-40, Card.CARD_HEIGHT-80, Color.white, null);
 
 		g.drawString(suit, _location.x + x_offset, _location.y + y_offset);
-		g.drawString(suit, _location.x + x_offset, _location.y + CARD_HEIGHT - 5);
+		g.drawString(suit, _location.x + x_offset, _location.y + CARD_HEIGHT - 10);
 	}
 
 	private void drawValue(Graphics2D g, String value)
 	{
 		g.drawString(value, _location.x + new_x_offset, _location.y + y_offset);
-		g.drawString(value, _location.x + new_x_offset, _location.y + y_offset + CARD_HEIGHT - 25);
+		g.drawString(value, _location.x + new_x_offset, _location.y + CARD_HEIGHT - 10);
 	}
 
 	@Override

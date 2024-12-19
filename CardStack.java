@@ -14,7 +14,7 @@ class CardStack extends JComponent
 	protected final int NUM_CARDS = 52;
 	protected Deque<Card> v;
 	protected boolean playStack = false;
-	protected int SPREAD = 18;
+	protected int SPREAD = 25;
 	protected int _x = 0;
 	protected int _y = 0;
 
@@ -104,7 +104,7 @@ class CardStack extends JComponent
 
 	public int showSize()
 	{
-		System.out.println("Stack Size: " + v.size());
+		//System.out.println("Stack Size: " + v.size());
 		return v.size();
 	}
 
@@ -120,7 +120,7 @@ class CardStack extends JComponent
 	@Override
 	public boolean contains(Point p)
 	{
-		Rectangle rect = new Rectangle(_x, _y, Card.CARD_WIDTH + 10, Card.CARD_HEIGHT * 3);
+		Rectangle rect = new Rectangle(_x, _y, Card.CARD_WIDTH + 10, Card.CARD_HEIGHT * 9);
 		return (rect.contains(p));
 	}
 
@@ -139,17 +139,14 @@ class CardStack extends JComponent
 	}
 
 	@Override
-	protected void paintComponent(Graphics g)
-	{
-		super.paintComponent(g);
+	protected void paintComponent(Graphics g) {
+		removeAll();
 		if (playStack)
 		{
-			removeAll();
 			Iterator<Card> iter = v.iterator();
 			Point prev = new Point(); // positioning relative to the container
 			Point prevWhereAmI = new Point();// abs positioning on the board
-			if (iter.hasNext())
-			{
+			if (iter.hasNext()) {
 				Card c = iter.next();
 				// this origin is point(0,0) inside the cardstack container
 				prev = new Point();// c.getXY(); // starting deck pos
@@ -157,8 +154,8 @@ class CardStack extends JComponent
 				// setting x & y position
 				c.setWhereAmI(getXY());
 				prevWhereAmI = getXY();
-			} else
-			{
+			}
+			else {
 				removeAll();
 			}
 

@@ -411,8 +411,8 @@ public class Solitaire
 						System.out.print("moving new card ");
 						movedCard.setXY(dest.getFirst().getXY());
 						table.remove(prevCard);
-
 						dest.putFirst(movedCard);
+
 						table.repaint();
 						movedCard = null;
 						putBackOnDeck = false;
@@ -440,8 +440,10 @@ public class Solitaire
 						{
 							dest.push(movedCard);
 							table.remove(prevCard);
+
 							dest.repaint();
 							table.repaint();
+
 							movedCard = null;
 							putBackOnDeck = false;
 
@@ -462,6 +464,7 @@ public class Solitaire
 						System.out.println("Destin" + dest.showSize());
 						dest.push(movedCard);
 						table.remove(prevCard);
+
 						dest.repaint();
 						table.repaint();
 						movedCard = null;
@@ -496,12 +499,14 @@ public class Solitaire
 							&& validPlayStackMove(card, dest.getFirst()) && transferStack.showSize() == 1)
 					{
 						Card c = null;
-						if (sourceIsFinalDeck)
+						if (sourceIsFinalDeck) {
 							c = source.pop();
+						}
 						else
 							c = source.popFirst();
 
 						c.repaint();
+
 						// if playstack, turn next card up
 						if (source.getFirst() != null)
 						{
@@ -509,12 +514,10 @@ public class Solitaire
 							temp.repaint();
 							source.repaint();
 						}
-
-						dest.setXY(dest.getXY().x, dest.getXY().y);
 						dest.putFirst(c);
+						dest.setXY(dest.getXY().x, dest.getXY().y);
 
 						dest.repaint();
-
 						table.repaint();
 
 						System.out.print("Destination ");
@@ -534,6 +537,7 @@ public class Solitaire
 							c = source.popFirst();
 
 						c.repaint();
+
 						// if playstack, turn next card up
 						if (source.getFirst() != null)
 						{
@@ -541,12 +545,10 @@ public class Solitaire
 							temp.repaint();
 							source.repaint();
 						}
-
-						dest.setXY(dest.getXY().x, dest.getXY().y);
 						dest.putFirst(c);
+						dest.setXY(dest.getXY().x, dest.getXY().y);
 
 						dest.repaint();
-
 						table.repaint();
 
 						System.out.print("Destination ");
