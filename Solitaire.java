@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Solitaire
 {
 	// CONSTANTS
-	public static final int TABLE_HEIGHT = Card.CARD_HEIGHT * 4;
+	public static final int TABLE_HEIGHT = Card.CARD_HEIGHT * 6;
 	public static final int TABLE_WIDTH = (Card.CARD_WIDTH * 7) + 100;
 	public static final int NUM_FINAL_DECKS = 4;
 	public static final int NUM_PLAY_DECKS = 7;
@@ -794,12 +794,11 @@ public class Solitaire
 
 		newGameButton.addActionListener(new NewGameListener());
 		newGameButton.setBounds(120, TABLE_HEIGHT - 70, 120, 30);
-
+		newGameButton.setBackground(new Color(0,0,255));
 
 		quitGameButton.addActionListener(new QuitGameListener());
 		quitGameButton.setBounds(0, TABLE_HEIGHT - 70, 120, 30);
-
-
+		quitGameButton.setBackground(new Color(255,0,0));
 
 		showRulesButton.addActionListener(new ShowRulesListener());
 		showRulesButton.setBounds(240, TABLE_HEIGHT - 70, 120, 30);

@@ -1,9 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="SolitaireJar" type="JarApplication">
-    <target name="@@@LOCAL@@@" />
-    <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Solitaire_jar/Solitaire.jar" />
-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    <option name="ALTERNATIVE_JRE_PATH" />
-    <method v="2" />
-  </configuration>
-</component>

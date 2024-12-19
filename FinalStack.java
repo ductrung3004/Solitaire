@@ -12,8 +12,7 @@ import java.awt.geom.RoundRectangle2D;
  */
 class FinalStack extends CardStack
 {
-	public FinalStack()
-	{
+	public FinalStack() {
 		super(false);
 	}
 
