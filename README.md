@@ -1,9 +1,9 @@
 
 # Solitaire Project for Data Structures and Algorithms (DSA) Course
 
-
-![Logo](https://hcmiu.edu.vn/wp-content/uploads/2017/08/logo-vector-IU-01.png = 250x)
-
+<p align="center">
+  <img src="images/iulogo.png" width="250"/>
+<p/>
 
 ## Project Overview
 My version of Klondike is an application. It allows the user to cycle through 
