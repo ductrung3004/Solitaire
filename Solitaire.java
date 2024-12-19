@@ -26,8 +26,6 @@ public class Solitaire
 
 
 
-
-	;
 	// GUI COMPONENTS (top level)
 	private static final JFrame frame = new JFrame("Klondike Solitaire");
 	protected static final JPanel table = new JPanel();
@@ -36,20 +34,13 @@ public class Solitaire
 	private static JButton showRulesButton = new JButton("Show Rules");
 	private static JButton newGameButton = new JButton("New Game");
 	private static JButton quitGameButton = new JButton("Quit Game");
-	private static JButton toggleTimerButton = new JButton("Pause Timer");
 	private static JTextField scoreBox = new JTextField();// displays the score
-	private static JTextField timeBox = new JTextField();// displays the time
 	private static JTextField statusBox = new JTextField();// status messages
 	private static final Card newCardButton = new Card();// reveal waste card
 
-	// TIMER UTILITIES
-	private static Timer timer = new Timer();
-	private static ScoreClock scoreClock = new ScoreClock();
 
 	// MISC TRACKING VARIABLES
-	private static boolean timeRunning = false;// timer running?
 	private static int score = 0;// keep track of the score
-	private static int time = 0;// keep track of seconds elapsed
 
 	// moves a card to abs location within a component
 	protected static Card moveCard(Card c, int x, int y)
@@ -68,44 +59,6 @@ public class Solitaire
 		scoreBox.repaint();
 	}
 
-	// GAME TIMER UTILITIES
-	protected static void updateTimer()
-	{
-		Solitaire.time += 1;
-		String time = "Seconds: " + Solitaire.time;
-		timeBox.setText(time);
-		timeBox.repaint();
-	}
-
-	protected static void startTimer()
-	{
-		scoreClock = new ScoreClock();
-		// set the timer to update every second
-		timer.scheduleAtFixedRate(scoreClock, 1000, 1000);
-		timeRunning = true;
-	}
-
-	// the pause timer button uses this
-	protected static void toggleTimer()
-	{
-		if (timeRunning && scoreClock != null)
-		{
-			scoreClock.cancel();
-			timeRunning = false;
-		} else
-		{
-			startTimer();
-		}
-	}
-
-	private static class ScoreClock extends TimerTask
-	{
-		@Override
-		public void run()
-		{
-			updateTimer();
-		}
-	}
 
 	// BUTTON LISTENERS
 	private static class NewGameListener implements ActionListener
@@ -121,22 +74,6 @@ public class Solitaire
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);
-		}
-
-	}
-	private static class ToggleTimerListener implements ActionListener
-	{
-		@Override
-		public void actionPerformed(ActionEvent e)
-		{
-			toggleTimer();
-			if (!timeRunning)
-			{
-				toggleTimerButton.setText("Start Timer");
-			} else
-			{
-				toggleTimerButton.setText("Pause Timer");
-			}
 		}
 
 	}
@@ -792,7 +729,6 @@ public class Solitaire
 			}
 		}
 		// reset time
-		time = 0;
 
 		newGameButton.addActionListener(new NewGameListener());
 		newGameButton.setBounds(120, TABLE_HEIGHT - 70, 120, 30);
@@ -815,14 +751,12 @@ public class Solitaire
 		scoreBox.setEditable(false);
 		scoreBox.setOpaque(false);
 
-		startTimer();
 
 		statusBox.setBounds(480, TABLE_HEIGHT - 70, 305, 30);
 		statusBox.setEditable(false);
 		statusBox.setOpaque(false);
 
 		table.add(statusBox);
-		table.add(toggleTimerButton);
 		table.add(gameTitle);
 		table.add(quitGameButton);
 		table.add(newGameButton);
